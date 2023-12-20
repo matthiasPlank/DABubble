@@ -1,0 +1,32 @@
+<app-intro (introComplete)="handleIntroComplete($event)" *ngIf="!introComplete"></app-intro>
+<div id="startScreen-container">
+    <div class="uper-startscreen-container">
+        <div id="startScreen-logo">
+            <img src="assets/img/logo/logo.svg" alt="logo">
+        </div>
+        <div id="startScreen-register" *ngIf="showLogin && !imprint && !privacyPolicy">
+            <h3>Neu bei DABubble?</h3>
+            <a (click)="showLogin = false; showRegister = true">Konto erstellen</a>
+        </div>
+    </div>
+    <app-login *ngIf="showLogin && !imprint && !privacyPolicy && !showAvatar && !showForgotPassword"(forgotPasswordLinkClick)="onForgotPasswordLinkClick()" class="app-login"></app-login>
+        <app-register *ngIf="showRegister && !showLogin && !imprint && !privacyPolicy && !showAvatar" 
+        (closeRegisterView)="closeRegister()"  (openPrivacyPolicy)="handleOpenImprint()" class="app-register"></app-register>
+        <app-avatar-choose *ngIf="showAvatar && !showLogin" (closeAvatarView)="closeAvatar()" class="app-avatar"></app-avatar-choose>
+        <app-forgot-password *ngIf="showForgotPassword" (closeForgotPasswordView)="closeForgotPassword()" class="app-forgot"></app-forgot-password>
+        <app-imprint *ngIf="imprint" (closeImprintView)="closeImprintAndPrivacy()"></app-imprint>
+        <app-privacy-policy *ngIf="privacyPolicy" (closePrivacyPolicyView)="closeImprintAndPrivacy()"></app-privacy-policy>
+    <div id="startscreen-imprint-container">
+        <a (click)="imprint = true" *ngIf="!imprint && !privacyPolicy">Impressum</a>
+        <a (click)="privacyPolicy = true" *ngIf="!imprint && !privacyPolicy">Datenschutz</a>
+    </div>
+    <div id="startScreen-register-mobile" *ngIf="showLogin && !imprint && !privacyPolicy">
+        <h3>Neu bei DABubble?</h3>
+        <a (click)="showLogin = false; showRegister = true">Konto erstellen</a>
+
+        <div id="startScreen-imprint-mobile">
+            <a (click)="imprint = true" *ngIf="!imprint && !privacyPolicy">Impressum</a>
+            <a (click)="privacyPolicy = true" *ngIf="!imprint && !privacyPolicy">Datenschutz</a>
+        </div>
+    </div>
+</div>

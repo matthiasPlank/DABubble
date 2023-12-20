@@ -1,0 +1,48 @@
+<mat-card class="user-avatar-container br-30">
+  <div class="user-avatar-title">
+    <div class="user-uper-avatar-title">
+      <a class="user-uper-icon-title" href="/">
+        <img src="./assets/img/icons/arrow_left_back.svg" />
+      </a>
+      <h1>Wähle deinen Avatar</h1>
+    </div>
+    <div class="avatar-box">
+      <img [src]="user.avatar" />
+    </div>
+    <span class="username-box">{{ userService.currentUser.fullName }}</span>
+
+    <div class="choose-avatar-container">
+      <div class="choose-avatar-text-box">Aus der Liste wählen</div>
+      <div class="choose-avatar-box" *ngFor="let avatar of avatars">
+        <img
+          [src]="'assets/img/avatar/' + avatar"
+          (click)="selectAvatar(avatar)"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="choose-avatar-upload-container">
+    eigenes Bild verwenden
+    <label for="fileUpload" class="white-button"> Datei hochladen </label>
+    <input
+      id="fileUpload"
+      type="file"
+      accept="image/*"
+      #upload
+      (change)="uploadFile(upload)"
+      style="display: none"
+    />
+  </div>
+
+  <div class="user-avatar-button-container">
+    <button
+      (click)="onSubmitAvatar()"
+      class="blue-button"
+      mat-raised-button
+      color="primary"
+    >
+      Weiter
+    </button>
+  </div>
+</mat-card>

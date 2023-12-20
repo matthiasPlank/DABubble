@@ -1,0 +1,96 @@
+$sideNav-width: 366px;
+$thread-width: 600px;
+
+app-channel, app-chat, app-empty-window {
+    flex-grow: 1;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    max-height: calc(100vh - 48px);
+    padding: 24px;
+
+    #main-body {
+
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        height: calc(100% - 100px);
+
+        #main-sidebar {
+            width: $sideNav-width;
+        }
+
+        #main-channel {}
+
+        #main-chat {}
+
+        #main-thread {
+            width: $thread-width;
+        }
+    }
+}
+
+#workspace {
+    position: fixed;
+    left: -125px;
+    bottom: 30vh;
+    z-index: 8;
+    width: 250px;
+    transform: rotate(90deg);
+    border-radius: 30px 30px 0px 0px;
+    padding-left: 18px;
+    padding-right: 18px;
+    box-shadow: 11px 28px 77px 0px rgba(0, 0, 0, 0.75);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        color: #535AF1;
+        cursor: pointer;
+    }
+}
+#main-body-mobile{
+    display: none;
+}
+
+#new-message-mobile{
+    position: fixed;
+    bottom: 24px; 
+    right: 24px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    #workspace {
+        display: none;
+    }
+
+    #main-container{
+        padding: unset;
+        height: 100%;
+        max-height: 100vh;
+
+        #main-header{
+            padding: 24px 24px 0px 24px;
+        }
+        
+        #main-body{
+            display: none !important;
+        }
+        
+        #main-body-mobile{
+            display: block;
+            height: calc(100% - 110px);
+        }
+    }
+
+}

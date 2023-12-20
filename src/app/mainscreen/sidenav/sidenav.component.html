@@ -1,0 +1,68 @@
+<mat-card id="sidenav" class="br-30">
+   
+    <div class="sidenavHeader">
+        <img src="/assets/img/logo/codeLearningLogo.png">
+        <h3>Code learning</h3>
+        <button mat-icon-button class="editSquare" (click)="openNewChatOrChannel()">
+            <mat-icon>
+                <img src="/assets/img/icons/editSquare.png">
+            </mat-icon>
+        </button>
+    </div>
+    <div id="sidenav-mobile-searchbar" *ngIf="windowWidth <= 768">
+        <app-searchbar *ngIf="userService.finishedLoading && channelService.finishedLoading"  [types]='"all"' [action]="'openSelection'" [setStyle]="'sideNavMobile'"></app-searchbar>
+    </div>
+
+    <div class="myChannelsContainer">
+
+        <div class="myChannelsHeader">
+            <div (click)="showChannels()" class="myChannelsHeader2">
+                <img class="pad-right17 arrow_drop_channels" id="arrow_drop_channels"
+                    [src]="unpackChannels ? '/assets/img/icons/arrow_drop_down.png' : '/assets/img/icons/arrow_drop.png'">
+                <img class="pad-right17 workspaces" src="/assets/img/icons/workspaces.png">
+                <h3 class="myChannelsHeaderText">Channels</h3>
+            </div>
+            <button (click)="openDialog()" mat-icon-button>
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <div class="myChannelsDropdown pad-left18" id="myChannelsDropdown" *ngIf="unpackChannels">
+
+            <div class="myChannels">
+                <div class="myChannels-channel" *ngFor=" let channel of channelService.loadedChannels"
+                    (click)="channelService.selectChannel(channel.id)"
+                    [class.myChannels-channel-selected]="channelService.getSelectedChannelID()===channel.id">
+                    <h2 class="myChannels-channel-icon">#</h2>
+                    <h3 class="myChannels-channel-name" >{{ getShortenedString(channel.channelName) }}</h3>
+                </div>
+            </div>
+
+            <div class="addChannel" (click)="openDialog()">
+                <img class="pad-right17" src="/assets/img/icons/add_circle.png">
+                Channel hinzufügen
+            </div>
+        </div>
+    </div>
+
+    <div class="myMessagesContainer">
+        <div (click)="showMessages()" class="myMessagesHeader">
+            <img class="pad-right17 arrow_drop" src="/assets/img/icons/arrow_drop.png"
+                [src]="unpackMessages ? '/assets/img/icons/arrow_drop_down.png' : '/assets/img/icons/arrow_drop.png'">
+            <img class="pad-right17 accountIcon" src="/assets/img/icons/accountIcon.png">
+            <h3 class="myMessagesHeaderText">Direktnachrichten</h3>
+        </div>
+
+        <div class="myMessages" id="myMessages" *ngIf="unpackMessages">
+
+            <app-chat-view
+                [uId]="userService.currentUser.id" (click)="chatService.selectPersonalChat()">
+            </app-chat-view>
+
+            <app-chat-view *ngFor="let chat of chatService.loadedChats"
+                [uId]="chatService.getChatPartner(chat)" (click)="chatService.selectChat(chat.id)">
+            </app-chat-view>
+        </div>
+    </div>
+
+</mat-card>

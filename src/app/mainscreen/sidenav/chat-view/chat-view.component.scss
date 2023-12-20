@@ -1,0 +1,64 @@
+.message {
+    
+    width: 240px;
+    height: 60px;
+    border-radius: 37px;
+    margin-top: 8px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:12px; 
+    
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+
+    &:hover {
+        background-color: rgba(155, 150, 250, 0.37);
+        cursor: pointer;
+    }
+
+    .avatar0 {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    #header-user-icon {
+        position: relative;
+
+        img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        #header-status {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            min-width: 10px;
+            min-height: 10px;
+            border-radius: 50%;
+            z-index: 10;
+            border: 1px solid white;
+        }
+    }
+    #header-user-name{
+        display: flex;
+    }
+}
+
+.col-red{
+    color: red;
+    background-color: red
+   
+}
+.col-green{
+    color: green;
+    background-color: green;
+}
+.col-gray{
+    color: gray;
+    background-color: gray;
+}

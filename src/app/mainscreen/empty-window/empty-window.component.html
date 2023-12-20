@@ -1,0 +1,14 @@
+<mat-card id="emptyWindow">
+    
+    <div class='header'>
+        <div class="header-title" width="fit-content">
+            <h2>Neue Nachricht</h2>
+        </div>
+        <app-searchbar
+        *ngIf="userService.finishedLoading && channelService.finishedLoading"  
+        [types]='"all"' 
+        [action]="'openSelection'"
+        [setStyle]="'channelOption'">
+       </app-searchbar>
+    </div>
+</mat-card>

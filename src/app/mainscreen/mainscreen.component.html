@@ -1,0 +1,65 @@
+<div id="main-container" *ngIf="channelService.finishedLoading && userService.finishedLoading">
+    <app-header id="main-header" 
+        [channelSelected]="channelService.selectedChannelId != undefined"
+        [chatSelected]="chatService.selectedChatId != undefined"
+        [emptyChatSelectedMobile]="!showSidenavMobile"
+        (closeEmptyViewEvent)="showSidenavMobile = true;">
+    </app-header>
+    <div id="main-body" *ngIf="windowWidth > 768">
+        <app-sidenav *ngIf="sideNavOpen" id="main-sidebar"></app-sidenav>
+
+        <ng-container *ngIf="activeSelectionService.getActiveSelectionType() === 'Chat'; then chatView"></ng-container>
+        <ng-container *ngIf="activeSelectionService.getActiveSelectionType() === 'Channel'; then channelView"></ng-container>
+        <ng-container *ngIf="activeSelectionService.getActiveSelectionType() === ''; then emptyView"></ng-container>
+
+        <ng-template #chatView>
+            <app-chat id="main-chat"></app-chat>
+        </ng-template>
+        <ng-template #channelView>
+            <app-channel id="main-channel"></app-channel>
+            <app-thread id="main-thread" *ngIf="threadService.message"></app-thread>
+        </ng-template>
+        <ng-template #emptyView>
+            <app-empty-window></app-empty-window>
+        </ng-template>
+    </div>
+
+    <div id="main-body-mobile" *ngIf="windowWidth <= 768">
+        <ng-container *ngIf="activeSelectionService.getActiveSelectionType() === 'Chat'; then chatView"></ng-container>
+        <ng-container *ngIf="activeSelectionService.getActiveSelectionType() === 'Channel'; then channelView"></ng-container>
+        <ng-container *ngIf="activeSelectionService.getActiveSelectionType() === ''; then emptyView"></ng-container>
+
+        <ng-template #chatView>
+            <app-chat id="main-chat"></app-chat>
+        </ng-template>
+
+        <ng-template #channelView>
+            <app-channel id="main-channel" *ngIf="!threadService.message"></app-channel>
+            <app-thread id="main-thread" *ngIf="threadService.message"></app-thread>
+        </ng-template>
+
+        <ng-template #emptyView>
+            <app-sidenav *ngIf="showSidenavMobile" 
+            id="main-sidebar">
+            </app-sidenav>
+            <app-empty-window *ngIf="!showSidenavMobile"></app-empty-window>
+        </ng-template>
+
+        <div id="new-message-mobile"  *ngIf="activeSelectionService.getActiveSelectionType() === '' && showSidenavMobile">
+            <button mat-fab color="primary" aria-label="new message" (click)="newMessageMobile()">
+                <mat-icon>edit_square</mat-icon>
+            </button>
+        </div>
+    </div>
+   
+    
+</div>
+
+<div (click)="toggleSideNav()" id="workspace">
+    <h4 *ngIf="sideNavOpen">Workspace-Menü schließen</h4>
+    <h4 *ngIf="!sideNavOpen">Workspace-Menü öffnen</h4>
+</div>
+
+<div *ngIf="userProfilOpen">
+    <app-user-profil [user]="userProfilUser"></app-user-profil>
+</div>

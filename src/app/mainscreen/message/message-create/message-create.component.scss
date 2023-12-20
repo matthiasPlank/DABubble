@@ -1,0 +1,121 @@
+.msg-create-container {
+    position: relative;
+    width: calc(100% - 40px);
+    background-color: rgb(255, 255, 255);
+    border: solid 1px #ADB0D9;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    cursor: pointer;
+
+    
+
+    .option-icons {
+        z-index: 9;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        msg-mods {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .msg-write-container {
+        width: 100%;
+        margin-bottom: 60px;
+        border: none;
+        min-height: 30px;
+        font-size: 18px;
+        font-weight: 400;
+        border: none;
+        height: fit-content;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &:hover {
+        border: 1px solid rgba(68, 77, 242, 1);
+    }
+}
+
+
+#inputFieldUserSearch {
+    position: absolute;
+    bottom: 100px;
+    border: 1px solid #ADB0D9;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 200px;
+    overflow: scroll;
+
+    p {
+        margin: 0px;
+    }
+}
+
+.msg-mods {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.preview-file {
+    display: flex;
+    max-height: 60px;
+    max-width: 60px;
+    object-fit: cover;
+    align-items: flex-end;
+
+    img {
+        border-radius: 30%;
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+.close-red-icon {
+    display: flex;
+    position: absolute;
+    height: 20px !important;
+    top: 0px;
+    left: 184px;
+    cursor: pointer;
+}
+
+
+.msg-send svg:hover path {
+    fill: rgba(121, 126, 243, 1);
+}
+
+.msg-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 100%;
+
+    &:hover {
+        background-color: rgba(236, 238, 254, 1);
+        fill: rgba(68, 77, 242, 1);
+        #msg-icon path{
+            fill: #535AF1; 
+        }
+    }
+
+}

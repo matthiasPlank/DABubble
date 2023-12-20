@@ -1,0 +1,59 @@
+<div id="header-container" *ngIf="windowWidth > 768">
+    <div id="header-image-container">
+        <img src="assets/img/logo/logo.svg" alt="DABubble Logo">
+    </div>
+    <div id="searchbar">
+        <app-searchbar
+         *ngIf="userService.finishedLoading && channelService.finishedLoading"  
+         [types]='"all"' 
+         [action]="'openSelection'"
+         [setStyle]="'header'">
+        </app-searchbar>
+    </div>
+    <div id="header-user">
+        <h1 id="header-user-name">{{getShortenedString(user.fullName)}}</h1>
+        <div *ngIf="user.avatar!=''" id="header-user-icon">
+            <img src="{{user.avatar}}" alt="UserIcon">
+            <div id="header-status"></div>
+        </div>
+        <div id="headerDropdown">
+            <button mat-icon-button (click)="toogleHeaderMenu()" (click)="stopPropagation($event)">
+                <mat-icon>expand_more</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div id="userProfileMenuBackground" *ngIf="showHeaderMenu" (click)="closeProfilePopup()"></div>
+    <div id="headerMenu" *ngIf="showHeaderMenu" (click)="stopPropagation($event)">
+        <a (click)="showProfil()">Profil</a>
+        <a (click)="logout()">Log out</a>
+    </div>
+</div>
+
+<div id="header-container-mobile"  *ngIf="windowWidth <= 768">
+    <div id="header-image-container-mobile">
+        <img *ngIf="!channelSelected && !chatSelected && !emptyChatSelectedMobile" src="assets/img/logo/logo.svg" alt="DABubble Logo">
+        <div *ngIf="channelSelected || chatSelected || emptyChatSelectedMobile" id="header-image-container-mobile-selected">
+            <img src="/assets/img/icons/arrow_left_back.svg" alt="back" (click)="closeChatOrChannel()">
+            <img src="assets/img/logo/codeLearningLogo.png" alt="DABubble Logo">
+            <h3>Code learning</h3>
+        </div>
+    </div>
+    <div id="header-user-mobile" (click)="toogleHeaderMenu()">
+        <div *ngIf="user.avatar!=''" id="header-user-icon-mobile">
+            <img src="{{user.avatar}}" alt="UserIcon">
+        </div>
+    </div>
+
+    <div id="headerMenu-mobile" *ngIf="showHeaderMenu">    
+        <div class="headerMenu-mobile-entry">
+            <img src="assets/img/icons/accountIcon.png" alt="user">
+            <a (click)="showProfil()">Profil</a>
+        </div>
+        <div class="headerMenu-mobile-entry">
+            <img src="assets/img/icons/logout.svg" alt="logout">
+            <a (click)="logout()">Logout</a>
+        </div>
+    </div>
+    <div id="headerMenu-mobile-background" *ngIf="showHeaderMenu" (click)="showHeaderMenu = false"></div>
+
+</div>

@@ -1,0 +1,176 @@
+#UserProfil {
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 15;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #UserProfilCard {
+        min-width: 100px;
+        max-width: 500px;
+        min-height: 100px;
+        background-color: white;
+        padding: 24px;
+        box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.5);
+        
+        #headerUserProfil-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #headerUserProfil-image-container {
+            width: 100%;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            
+            img {
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        #headerUserProfil-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a{
+                color: #444DF2;
+                cursor: pointer;
+                &:hover{
+                    font-weight: bold;
+                }
+            }
+        }
+
+        #status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            #statusIcon {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+            }
+            #statusFont {
+                margin: 0px;
+            }
+        }
+        
+        #headerUserProfil-email {
+            display: flex;
+            flex-direction: column;
+
+            #headerUserProfil-email-header {
+                display: flex;
+                gap: 12px;
+            }
+            #headerUserProfil-email-address{
+                padding-left: 36px;
+                a{
+                    font-style: normal;
+                    color: #444DF2;
+                    margin-top: 0px;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        #headerUserProfil-message{
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            margin-top: 30px;
+            button{
+                display: flex;
+                justify-content: center;
+                align-items: center; 
+                gap:8px; 
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgba(121, 126, 243, 1) !important;
+                    transition: background-color 0.15s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+#headerUserProfil-EditMode {
+
+    .headerUserProfil-EditMode-Row {
+        display: flex;
+        align-items: center;
+        gap: 12px; 
+        img{
+            width: 24px;
+            height: 24px;
+        }
+    }
+    input {
+        border-radius: 30px;
+        color: #686868;
+        border: 1px solid #686868;
+        padding: 15px 20px 15px 20px;
+        font-family: 'Nunito', sans-serif;
+        width: calc(100% - 40px);
+    }
+    #headerUserProfil-EditMode-btn-container{
+        margin-top: 12px; 
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 24px; 
+    }
+    #headerUserProfil-EditMode-EditMailInfo{
+        color: red; 
+    }
+}
+
+.col-red{
+    color: red;
+    #statusIcon {
+        background-color: red
+    }
+}
+.col-green{
+    color: green;
+    #statusIcon {
+        background-color: green;
+    }
+}
+.col-gray{
+    color: gray;
+    #statusIcon {
+        background-color: gray;
+    }
+}
+
+.currentUserPosition{
+    /*
+    padding: 24px;
+    min-width: 100px;
+    max-width: 500px;
+    min-height: 100px;
+    z-index: 10;
+    */
+    top: 100px;
+    right: 24px;
+    position: absolute;
+    border-radius: 30px 0px 30px 30px;
+    
+}
+.otherUserPosition{
+    border-radius: 30px;
+}

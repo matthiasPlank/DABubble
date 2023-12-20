@@ -1,0 +1,74 @@
+//Revert default mat-card settings
+.mat-mdc-card-content:last-child {
+    padding: 0;
+}
+
+.mat-mdc-card-content:first-child {
+    padding: 0;
+}
+
+.mat-mdc-card-content {
+    padding: 0;
+}
+
+#thread {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    border-radius: 30px;
+
+    .header {
+        box-shadow: rgba(0, 0, 0, 0.8) 0 2px 23px -10px;
+        padding: 36px 45px;
+        border-radius: 30px 30px 0 0;
+        display: flex;
+        justify-content: space-between;
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        h2{
+            margin: 0px;
+        }
+    }
+
+    .chat-container {
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100% - 50px);
+
+        app-message {
+            margin-top: 35px;
+        }
+
+        app-date-line,
+        .line-container {
+            margin: 12px 35px 12px 35px;
+        }
+    }
+
+
+
+
+    app-message-create {
+        padding: 35px 35px 35px 35px;
+    }
+}
+
+
+
+
+.closeIcon {
+    cursor: pointer;
+}
+
+.channel-name-header {
+    color: #444DF2;
+    line-break: anywhere;
+}
